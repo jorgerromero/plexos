@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Started - AI Agent & Workflow Automation</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        .section {
+            padding: 6rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 1rem;
+            color: var(--light);
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        .section-title:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--light);
+            opacity: 0.8;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+            line-height: 1.6;
+        }
+
+        .contact-form {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2.5rem;
+            background: var(--darker);
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-form:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+        }
+
+        .form-group {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.8rem;
+            font-weight: 600;
+            color: var(--light);
+            font-size: 1.1rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 1rem 1.2rem;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--gray);
+            border-radius: 8px;
+            font-size: 1rem;
+            color: var(--light);
+            transition: all 0.3s ease;
+            font-family: inherit;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(138, 43, 226, 0.3);
+        }
+
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .btn-submit {
+            background: linear-gradient(45deg, var(--primary), var(--accent));
+            color: white;
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.1rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 600;
+            display: inline-block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .btn-submit:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: linear-gradient(45deg, var(--accent), var(--primary));
+            transition: all 0.5s ease;
+            z-index: -1;
+        }
+
+        .btn-submit:hover:before {
+            width: 100%;
+        }
+
+        .btn-submit:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .service-options {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1.5rem;
+            margin: 1.5rem 0;
+        }
+
+        .service-option {
+            background: var(--darker);
+            border: 1px solid var(--gray);
+            border-radius: 12px;
+            padding: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-option:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--primary);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .service-option:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+            border-color: var(--primary);
+        }
+
+        .service-option:hover:before {
+            transform: scaleX(1);
+        }
+
+        .service-option input[type="radio"] {
+            display: none;
+        }
+
+        .service-option input[type="radio"]:checked + .service-content {
+            border-color: var(--primary);
+            background: rgba(138, 43, 226, 0.1);
+        }
+
+        .service-content {
+            padding: 1rem;
+            border-radius: 8px;
+            border: 2px solid transparent;
+            transition: all 0.3s ease;
+            height: 100%;
+        }
+
+        .service-option h4 {
+            margin: 0 0 0.8rem 0;
+            color: var(--light);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .service-option p {
+            margin: 0;
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        select.form-control {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23FFFFFF%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.2-5.5-12.8z%22%2F%3E%3C%2Fsvg%3E");
+            background-repeat: no-repeat;
+            background-position: right 1rem top 50%;
+            background-size: 0.65em auto;
+            padding-right: 2.5rem;
+        }
+
+        @media (max-width: 768px) {
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .section {
+                padding: 4rem 0;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">AI<span>Flows</span></div>
+            <div class="nav-links">
+                <a href="index.html#features">Features</a>
+                <a href="index.html#use-cases">Use Cases</a>
+                <a href="index.html#process">Process</a>
+                <a href="index.html#contact" class="btn btn-primary">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Contact Form Section -->
+    <section class="section" style="background: linear-gradient(135deg, #0a0a0f 0%, #1a1a2e 100%);">
+        <div class="container">
+            <h1 class="section-title">Start Your AI Journey</h1>
+            <p class="section-subtitle">Tell us about your project and we'll get back to you within 24 hours</p>
+            
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" class="form-control" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company (Optional)</label>
+                    <input type="text" id="company" name="company" class="form-control">
+                </div>
+
+                <div class="form-group">
+                    <label>What type of AI service are you interested in?</label>
+                    <div class="service-options">
+                        <label class="service-option">
+                            <input type="radio" name="service" value="chatbot" required>
+                            <div class="service-content">
+                                <h4>🤖 Chatbot</h4>
+                                <p>AI-powered conversational agent for customer support or information</p>
+                            </div>
+                        </label>
+                        
+                        <label class="service-option">
+                            <input type="radio" name="service" value="workflow">
+                            <div class="service-content">
+                                <h4>⚙️ Workflow Automation</h4>
+                                <p>Automate repetitive tasks and business processes</p>
+                            </div>
+                        </label>
+                        
+                        <label class="service-option">
+                            <input type="radio" name="service" value="data-analysis">
+                            <div class="service-content">
+                                <h4>📊 Data Analysis</h4>
+                                <p>Extract insights from your data with AI</p>
+                            </div>
+                        </label>
+                        
+                        <label class="service-option">
+                            <input type="radio" name="service" value="custom">
+                            <div class="service-content">
+                                <h4>🔧 Custom Solution</h4>
+                                <p>Tailored AI solution for your specific needs</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="requirements">Tell us about your project requirements</label>
+                    <textarea id="requirements" name="requirements" class="form-control" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="budget">Presupuesto estimado (USD)</label>
+                    <div class="budget-options" style="margin-bottom: 1rem;">
+                        <div class="budget-option-group" style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.5rem;">
+                            <input type="radio" id="budget1" name="budget" value="500-2000" class="budget-radio" style="display: none;">
+                            <label for="budget1" class="budget-label" style="background: var(--darker); border: 1px solid var(--gray); border-radius: 20px; padding: 0.5rem 1.2rem; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">
+                                $500 - $2,000
+                            </label>
+                            
+                            <input type="radio" id="budget2" name="budget" value="2000-5000" class="budget-radio" style="display: none;">
+                            <label for="budget2" class="budget-label" style="background: var(--darker); border: 1px solid var(--gray); border-radius: 20px; padding: 0.5rem 1.2rem; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">
+                                $2,000 - $5,000
+                            </label>
+                            
+                            <input type="radio" id="budget3" name="budget" value="5000-10000" class="budget-radio" style="display: none;">
+                            <label for="budget3" class="budget-label" style="background: var(--darker); border: 1px solid var(--gray); border-radius: 20px; padding: 0.5rem 1.2rem; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">
+                                $5,000 - $10,000
+                            </label>
+                            
+                            <input type="radio" id="budget4" name="budget" value="10000-25000" class="budget-radio" style="display: none;">
+                            <label for="budget4" class="budget-label" style="background: var(--darker); border: 1px solid var(--gray); border-radius: 20px; padding: 0.5rem 1.2rem; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">
+                                $10,000 - $25,000
+                            </label>
+                            
+                            <input type="radio" id="budget5" name="budget" value="25000+" class="budget-radio" style="display: none;">
+                            <label for="budget5" class="budget-label" style="background: var(--darker); border: 1px solid var(--gray); border-radius: 20px; padding: 0.5rem 1.2rem; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">
+                                $25,000+
+                            </label>
+                            
+                            <input type="radio" id="budget-custom" name="budget" value="custom" class="budget-radio" style="display: none;">
+                            <label for="budget-custom" class="budget-label" style="background: var(--darker); border: 1px solid var(--gray); border-radius: 20px; padding: 0.5rem 1.2rem; cursor: pointer; transition: all 0.3s ease; font-size: 0.9rem;">
+                                Personalizado
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div id="custom-budget-container" style="display: none; margin-top: 1rem;
+                    ">
+                        <div style="display: flex; align-items: center; gap: 1rem;">
+                            <span style="color: var(--light);">$</span>
+                            <input type="number" id="custom-budget" name="custom-budget" class="form-control" style="flex: 1;" placeholder="Ingresa tu presupuesto">
+                            <select id="budget-frequency" name="budget-frequency" class="form-control" style="flex: 0 0 150px;">
+                                <option value="one-time">Pago único</option>
+                                <option value="monthly">Mensual</option>
+                                <option value="quarterly">Trimestral</option>
+                                <option value="yearly">Anual</option>
+                            </select>
+                        </div>
+                        <p style="color: rgba(255, 255, 255, 0.6); font-size: 0.85rem; margin-top: 0.5rem;">
+                            Indica el monto que tienes contemplado para este proyecto.
+                        </p>
+                    </div>
+                </div>
+                
+                <script>
+                    // Mostrar/ocultar campo de presupuesto personalizado
+                    document.querySelectorAll('.budget-radio').forEach(radio => {
+                        radio.addEventListener('change', function() {
+                            const customContainer = document.getElementById('custom-budget-container');
+                            if (this.value === 'custom') {
+                                customContainer.style.display = 'block';
+                                document.getElementById('custom-budget').setAttribute('required', 'required');
+                            } else {
+                                customContainer.style.display = 'none';
+                                document.getElementById('custom-budget').removeAttribute('required');
+                            }
+                        });
+                    });
+                    
+                    // Actualizar el valor del presupuesto personalizado
+                    document.getElementById('custom-budget').addEventListener('input', function() {
+                        const customRadio = document.getElementById('budget-custom');
+                        customRadio.value = 'custom-' + this.value;
+                    });
+                    
+                    // Actualizar el formulario antes de enviar
+                    document.getElementById('contactForm').addEventListener('submit', function(e) {
+                        const customBudget = document.getElementById('custom-budget');
+                        const customRadio = document.getElementById('budget-custom');
+                        
+                        if (customRadio.checked && customBudget.value) {
+                            const frequency = document.getElementById('budget-frequency').value;
+                            customRadio.value = `custom-${customBudget.value}-${frequency}`;
+                        }
+                        
+                        // Aquí puedes agregar más lógica de validación si es necesario
+                    });
+                </script>
+
+                <div class="form-group">
+                    <label for="timeline">Project Timeline</label>
+                    <select id="timeline" name="timeline" class="form-control" required>
+                        <option value="">Select timeline</option>
+                        <option value="asap">ASAP</option>
+                        <option value="1-3">1-3 months</option>
+                        <option value="3-6">3-6 months</option>
+                        <option value="6+">6+ months</option>
+                        <option value="flexible">Flexible</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit" class="btn-submit">
+                        <span>Submit Request</span>
+                        <i class="fas fa-arrow-right" style="margin-left: 10px;"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Aquí puedes agregar el código para manejar el envío del formulario
+            // Por ejemplo, enviar los datos a un servidor o mostrar un mensaje de confirmación
+            
+            alert('Thank you for your submission! We will get back to you within 24 hours.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
